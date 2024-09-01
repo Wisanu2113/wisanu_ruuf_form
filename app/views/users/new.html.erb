@@ -23,10 +23,10 @@
       <div class="gender">
         <%= f.label :gender, "Gender" %>
           <div class="row-container-gender">
-              <%= f.radio_button :gender, 'Male' %>
+              <%= f.radio_button :gender, 'Male', class: "gender-radio"  %>
               <%= f.label :gender_male, "Male" %>
                <div class='spacser'></div>
-              <%= f.radio_button :gender, 'Female' %>
+              <%= f.radio_button :gender, 'Female', class: "gender-radio"  %>
               <%= f.label :gender_female, "Female" %>
           </div>
       </div>
@@ -50,9 +50,9 @@
     </div>
   </div>
 
-  <div class="submit">
-    <%= f.submit "Submit"  %>
-  </div>
+
+ <%= f.submit "Submit", class: "submit-button" %>
+
 
 <% end %>
 

@@ -16,7 +16,7 @@ body {
     padding: 20px;
 
     border-radius: 10px;
-    background-color: #8ff990;
+    background-color: #ffffff;
     font-family: sans-serif;
 }
 
@@ -27,18 +27,20 @@ body {
 
 label{
     margin-bottom: 6px;
+    font-weight: 550;
 }
 
 input, select{
-    padding: 10px;
+    padding: 10px 10px 10px 16px;
     margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #cccccc;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;;
+    background-color: #fafafa;
 }
 
 form {
     padding: 10px;
-    background-color: #76b1f6;
+
 }
 
 .container-field{
@@ -79,3 +81,30 @@ form {
 }
 
 
+.submit-button {
+    width: 100%;
+    max-width: 100px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color:#5a73d0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+.submit-button:hover {
+    background-color: #3c5cd0;
+}
+
+.gender-radio {
+    accent-color: #7cb558;
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็น pointer เมื่อ hover */
+    border: #f3f3f3;
+    background-color: #fafafa;
+    margin-right: 6px;
+    margin-left: 0px;
+  }
+  
+ 
+  
