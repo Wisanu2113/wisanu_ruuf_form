@@ -23,7 +23,7 @@
       <div class="gender">
         <%= f.label :gender, "Gender" %>
           <div class="row-container-gender">
-              <%= f.radio_button :gender, 'Male', class: "gender-radio"  %>
+               <%= f.radio_button :gender, 'Male', class: "gender-radio" %>
               <%= f.label :gender_male, "Male" %>
                <div class='spacser'></div>
               <%= f.radio_button :gender, 'Female', class: "gender-radio"  %>
@@ -45,8 +45,8 @@
   </div>
   <div class="container-field">
     <div class="subject">
-      <%= f.label :subject, "Choose option" %>
-      <%= f.select :subject, [['Math', 'Math'], ['Science', 'Science'], ['History', 'History']], prompt: 'Select Subject', required: true %>
+      <%= f.label :subject, "Subject" %>
+      <%= f.select :subject, [['Math', 'Math'], ['Science', 'Science'], ['History', 'History']], prompt: 'Choose option', required: true %>
     </div>
   </div>
 

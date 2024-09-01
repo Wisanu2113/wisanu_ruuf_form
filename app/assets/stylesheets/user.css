@@ -13,11 +13,15 @@ body {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 80px 60px 60px 60px;
 
     border-radius: 10px;
     background-color: #ffffff;
     font-family: sans-serif;
+}
+h1{
+   font-size: 39px;
+    color: #333;
 }
 
 .spacser{
@@ -81,7 +85,6 @@ form {
 
 }
 
-
 .submit-button {
     width: 100%;
     max-width: 100px;
@@ -105,12 +108,11 @@ form {
     border-radius: 100%;
     appearance: auto;
    
-  }
+}
   
-  .gender-radio:checked {
+.gender-radio:checked {
     background-color: #4CAF50; /* สีพื้นหลังเมื่อเลือก */
-   
-  }
+}
   
   
  
