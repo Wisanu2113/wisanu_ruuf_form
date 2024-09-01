@@ -17,10 +17,9 @@ body {
 
     border-radius: 10px;
     background-color: #8ff990;
-
     font-family: sans-serif;
-
 }
+
 .spacser{
     min-width: 24px;
     max-width: 24px;
@@ -31,8 +30,6 @@ label{
 }
 
 input{
-    
-   
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -40,25 +37,44 @@ input{
 }
 
 form {
-
-
     padding: 10px;
     background-color: #76b1f6;
 }
 
-.container-name{
+.container-field{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     margin: 0 auto;
-    background-color: #9a4376;
+  
 }
 
-.first-name, .last-name{
+.first-name, .last-name {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.birthday{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.gender{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.row-container-gender{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+    padding: 10px 10px 10px 0;
 }
 

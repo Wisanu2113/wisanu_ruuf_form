@@ -1,7 +1,7 @@
 <section class="container-form">
 <%= form_with model: @user, url: users_path do |f| %>
   <h1>Register Form</h1>
-  <div class="container-name">
+  <div class="container-field">
       <div class="first-name">
         <%= f.label :first_name, "First Name" %>
         <%= f.text_field :first_name, required: true %>
@@ -13,17 +13,23 @@
       </div>
    </div>
 
-  <div>
-    <%= f.label :birthday, "Birthday" %>
-    <%= f.date_field :birthday, required: true %>
-  </div>
+  <div class="container-field">
+     <div class="birthday">
+        <%= f.label :birthday, "Birthday" %>
+        <%= f.date_field :birthday, required: true %>
+      </div>
+      <div class='spacser'></div>
 
-  <div>
-    <%= f.label :gender, "Gender" %><br>
-    <%= f.radio_button :gender, 'Male' %>
-    <%= f.label :gender_male, "Male" %>
-    <%= f.radio_button :gender, 'Female' %>
-    <%= f.label :gender_female, "Female" %>
+      <div class="gender">
+        <%= f.label :gender, "Gender" %>
+          <div class="row-container-gender">
+              <%= f.radio_button :gender, 'Male' %>
+              <%= f.label :gender_male, "Male" %>
+               <div class='spacser'></div>
+              <%= f.radio_button :gender, 'Female' %>
+              <%= f.label :gender_female, "Female" %>
+          </div>
+      </div>
   </div>
 
   <div>
