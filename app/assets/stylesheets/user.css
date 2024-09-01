@@ -78,6 +78,7 @@ form {
     justify-content: start;
     width: 100%;
     padding: 10px 10px 10px 0;
+
 }
 
 
@@ -98,13 +99,19 @@ form {
 }
 
 .gender-radio {
-    accent-color: #7cb558;
-    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็น pointer เมื่อ hover */
-    border: #f3f3f3;
-    background-color: #fafafa;
+    cursor: pointer; 
     margin-right: 6px;
-    margin-left: 0px;
+    margin-left: 0px; 
+    border-radius: 100%;
+    appearance: auto;
+   
   }
+  
+  .gender-radio:checked {
+    background-color: #4CAF50; /* สีพื้นหลังเมื่อเลือก */
+   
+  }
+  
   
  
   
