@@ -1,2 +1,45 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Register User</h1>
+
+<%= form_with model: @user, url: users_path do |f| %>
+  <div>
+    <%= f.label :first_name, "First Name" %>
+    <%= f.text_field :first_name, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :last_name, "Last Name" %>
+    <%= f.text_field :last_name, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :birthday, "Birthday" %>
+    <%= f.date_field :birthday, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :gender, "Gender" %><br>
+    <%= f.radio_button :gender, 'Male' %>
+    <%= f.label :gender_male, "Male" %>
+    <%= f.radio_button :gender, 'Female' %>
+    <%= f.label :gender_female, "Female" %>
+  </div>
+
+  <div>
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :phone, "Phone" %>
+    <%= f.telephone_field :phone, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :subject, "Subject" %>
+    <%= f.select :subject, [['Math', 'Math'], ['Science', 'Science'], ['History', 'History']], prompt: 'Select Subject', required: true %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
