@@ -29,7 +29,7 @@ label{
     margin-bottom: 6px;
 }
 
-input{
+input, select{
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -51,7 +51,7 @@ form {
   
 }
 
-.first-name, .last-name {
+.first-name, .last-name, .email, .phone, .subject {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -77,4 +77,5 @@ form {
     width: 100%;
     padding: 10px 10px 10px 0;
 }
+
 
