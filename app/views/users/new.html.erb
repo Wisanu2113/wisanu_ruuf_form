@@ -1,5 +1,6 @@
-<h1>Register Form</h1>
+<section class="container-form">
 
+<h1>Register Form</h1>
 <%= form_with model: @user, url: users_path do |f| %>
   <div>
     <%= f.label :first_name, "First Name" %>
@@ -43,3 +44,5 @@
     <%= f.submit "Submit" %>
   </div>
 <% end %>
+
+</section>
