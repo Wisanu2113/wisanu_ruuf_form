@@ -9,13 +9,56 @@ body {
     align-items: center;
     background: linear-gradient(to bottom, #9a4376, #c44577);
 }
-
 .container-form{
-    max-width: 800px;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #e8e8e8;
+
+    border-radius: 10px;
+    background-color: #8ff990;
+
+    font-family: sans-serif;
 
 }
+.spacser{
+    min-width: 24px;
+    max-width: 24px;
+}
+
+label{
+    margin-bottom: 6px;
+}
+
+input{
+    
+   
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+form {
+
+
+    padding: 10px;
+    background-color: #76b1f6;
+}
+
+.container-name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #9a4376;
+}
+
+.first-name, .last-name{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
