@@ -1,0 +1,57 @@
+# Hello world
+services:
+
+  db: #service ของ postgres
+    image: postgres:16-alpine  #ใช้ images ของ postgres 16 ที่เป็น alpine มันมีขนาดเล็ก
+    container_name: local_db #ชื่อ container
+    restart: always  #ตั้งให้ container รีสตาร์ทอัตโนมัติหากมีข้อผิดพลาด
+    ports:
+      - "5432:5432"   #เปิด port 5432 ให้เราใช้งาน
+    environment:   #กำหนด environment ของ postgres
+      - POSTGRES_DB=${POSTGRES_DB}  
+      - POSTGRES_USER=${POSTGRES_LOCAL_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_LOCAL_PASSWORD}
+    volumes: # ตั้งค่าให้ข้อมูลฐานข้อมูลถูกเก็บไว้ใน volume local_pgdata เพื่อให้ข้อมูลไม่หายเมื่อ container หยุดทำงาน
+      - local_pgdata:/var/lib/postgresql/data   
+    networks:
+      - app-networks #กำหนดให้บริการนี้อยู่ใน network ที่ชื่อว่า app-networks เพื่อให้สื่อสารกับบริการอื่นๆ
+
+  pgadmin: 
+    image: dpage/pgadmin4 #ใช้ images ของ pgadmin4
+    container_name: pgadmin4_container #ชื่อ container
+    restart: always #ตั้งให้ container รีสตาร์ทอัตโนมัติหากมีข้อผิดพลาด
+    ports:
+      - "8888:80"   #เปิด port 8888 ให้เราใช้งาน
+    environment: # กำหนด environment ของ pgadmin
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    volumes: # ตั้งค่าให้ข้อมูล pgadmin ถูกเก็บไว้ใน volume pgadmin-data เพื่อให้ข้อมูลไม่หายเมื่อ container หยุดทำงาน
+      - pgadmin-data:/var/lib/pgadmin
+    networks: # กำหนดให้บริการนี้อยู่ใน network ที่ชื่อว่า app-networks เพื่อให้สื่อสารกับบริการอื่นๆ
+      - app-networks
+
+  web: 
+    build: .  # กำหนดให้สร้าง Docker image จาก Dockerfile ในไดเร็กทอรีปัจจุบัน
+    #รันคำสั่งเพื่อเตรียมและเริ่มเซิร์ฟเวอร์ Rails 
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -b '0.0.0.0'"
+    environment:
+      - RAILS_ENV=${RAILS_ENV}
+    ports:
+      - "3000:3000" #เปิดพอร์ต 3000 
+    env_file:
+      - .env  #เมื่อแก้ไขโค้ดจะอัปเดตได้โดยไม่ต้องสร้าง Docker image ใหม่
+    restart: unless-stopped #ตั้งให้ container รีสตาร์ทอัตโนมัติหากหยุดทำงาน แต่จะไม่รีสตาร์ทเมื่อถูกหยุดด้วยมือ
+    networks:
+      - app-networks
+    volumes:
+      - .:/rails #แชร์โค้ดจากเครื่องของเราไปยัง container ที่โฟลเดอร์ /rails เพื่อให้สามารถพัฒนาได้โดยไม่ต้องสร้าง image ใหม่ทุกครั้ง
+      
+volumes:
+  local_pgdata: {}
+  pgadmin-data: {} 
+
+networks:
+  app-networks:
+
+
+  
