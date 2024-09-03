@@ -1,62 +1,73 @@
-# syntax = docker/dockerfile:1
+# syntax = docker/dockerfile:1  บอกให้ Docker ใช้ syntax เวอร์ชัน 1 ในการเขียน Dockerfile นี้
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.3.1
+# กำหนดค่า default version ของ Ruby ที่จะใช้ในการ build image
+ARG RUBY_VERSION=3.3.1 
+
+# ใช้ image ของ Ruby ที่เป็น slim version ในการ build image นี้ และตั้งชื่อ image ว่า "base"
+# สาระน่ารู้ slim version เป็น image ที่ถูกออกแบบมาให้มีขนาดเล็กและมีเพียงสิ่งจำเป็นเท่านั้น
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
-# Rails app lives here
+# กำหนด working directory ใน container ให้เป็น /rails ซึ่งจะเป็นที่เก็บโค้ดของแอป
 WORKDIR /rails
 
-# Set production environment
+# ตั้งค่า environment variables เพื่อกำหนดการทำงานของ Rails ในโหมด production และระบุให้ bundle ติดตั้ง gems ที่จำเป็นเท่านั้น โดยไม่รวมส่วน development
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
 
-# Throw-away build stage to reduce size of final image
+# สร้าง image ใหม่จาก base image ที่ตั้งไว้ และตั้งชื่อเฟสนี้ว่า "build"
 FROM base as build
 
-# Install packages needed to build gems
+# ติดตั้งแพ็กเกจที่จำเป็นสำหรับการสร้าง gems (library ของ Ruby)
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libvips pkg-config
 
-# Install application gems
+# คัดลอกไฟล์ Gemfile และ Gemfile.lock จากเครื่องของเราไปยัง container
 COPY Gemfile Gemfile.lock ./
+
+# ติดตั้ง gems ทั้งหมดตามที่ระบุใน Gemfile และลบ cache ต่างๆ เพื่อลดขนาดของ image จากนั้นทำการ precompile ด้วย bootsnap เพื่อเร่งความเร็วในการรันแอป
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
-# Copy application code
+# คัดลอกโค้ดแอปทั้งหมดจากเครื่องเราไปยัง container
 COPY . .
 
-# Precompile bootsnap code for faster boot times
+# ทำการ precompile โค้ดในโฟลเดอร์ app/ และ lib/ เพื่อเพิ่มความเร็วในการเริ่มต้นแอป
 RUN bundle exec bootsnap precompile app/ lib/
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+# ทำการ precompile assets โดยไม่ต้องการ RAILS_MASTER_KEY เพื่อเตรียมพร้อมสำหรับการใช้งานใน production
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
-# Final stage for app image
+# เริ่ม image ใหม่จาก base อีกครั้งเพื่อสร้าง image สุดท้ายสำหรับ deployment
 FROM base
 
-# Install packages needed for deployment
+# ติดตั้งแพ็กเกจที่จำเป็นสำหรับการรันแอปและลบ cache ต่างๆ เพื่อลดขนาดของ image
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libsqlite3-0 libvips && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Copy built artifacts: gems, application
+# คัดลอก gems ที่สร้างไว้ในเฟส build มาไว้ใน image สุดท้าย
 COPY --from=build /usr/local/bundle /usr/local/bundle
+
+#คัดลอกโค้ดแอปที่สร้างไว้ในเฟส build มาไว้ใน image สุดท้าย
 COPY --from=build /rails /rails
 
-# Run and own only the runtime files as a non-root user for security
+# สร้าง user rails เพื่อใช้งานใน container และกำหนดสิทธิ์ให้ user นี้เป็นเจ้าของโฟลเดอร์ที่สำคัญต่างๆ เพื่อเพิ่มความปลอดภัย
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
+
+# เปลี่ยน user ที่จะใช้รัน container ให้เป็น rails
 USER rails:rails
 
-# Entrypoint prepares the database.
+# กำหนดคำสั่งเริ่มต้นเมื่อ container รัน โดยจะเรียกใช้งาน docker-entrypoint ซึ่งเป็นสคริปต์เตรียมฐานข้อมูล
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-# Start the server by default, this can be overwritten at runtime
+# เปิดพอร์ต 3000 เพื่อให้ภายนอกสามารถเข้าถึงเว็บเซิร์ฟเวอร์ใน container ได้
 EXPOSE 3000
+
+# กำหนดคำสั่งเริ่มต้นเมื่อ container รันให้เป็นการเริ่มต้นเซิร์ฟเวอร์ Rails
 CMD ["./bin/rails", "server"]

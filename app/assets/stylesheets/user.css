@@ -20,7 +20,7 @@ body {
     font-family: sans-serif;
 }
 h1{
-   font-size: 39px;
+   font-size: 40px;
     color: #333;
 }
 
@@ -32,14 +32,16 @@ h1{
 label{
     margin-bottom: 6px;
     font-weight: 550;
+    font-size: 18px;
 }
 
 input, select{
-    padding: 10px 10px 10px 16px;
+    padding: 10px 16px 10px 16px;
     margin-bottom: 20px;
     border-radius: 10px;
-    border: 1px solid #e5e5e5;;
+    border: 1px solid #cbcbcb;
     background-color: #fafafa;
+    font-size: 14px;
 }
 
 form {
