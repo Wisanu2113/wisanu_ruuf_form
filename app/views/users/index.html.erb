@@ -24,9 +24,11 @@
           <td><%= user.phone %></td>
           <td><%= user.subject %></td>
           <td>
-            <%= button_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+            <%= link_to 'Edit', edit_user_path(user), class: 'btn-edit' %>
+            <%= button_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
           </td>
-        </tr>
+        </tr> 
       <% end %>
     </tbody>
   </table>

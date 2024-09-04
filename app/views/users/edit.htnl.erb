@@ -1,0 +1,56 @@
+<section class="container-form">
+  <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
+    <h1>Edit User</h1>
+    <div class="container-field">
+        <div class="first-name">
+          <%= f.label :first_name, "First Name" %>
+          <%= f.text_field :first_name, required: true %>
+        </div>
+        <div class='spacser'></div>
+        <div class="last-name">
+          <%= f.label :last_name, "Last Name" %>
+          <%= f.text_field :last_name, required: true %>
+        </div>
+     </div>
+
+   <div class="container-field">
+      <div class="birthday">
+         <%= f.label :birthday, "Birthday" %>
+         <%= f.date_field :birthday, required: true %>
+       </div>
+       <div class='spacser'></div>
+
+       <div class="gender">
+         <%= f.label :gender, "Gender" %>
+           <div class="row-container-gender">
+                <%= f.radio_button :gender, 'Male', class: "gender-radio" %>
+               <%= f.label :gender_male, "Male" %>
+                <div class='spacser'></div>
+               <%= f.radio_button :gender, 'Female', class: "gender-radio"  %>
+               <%= f.label :gender_female, "Female" %>
+           </div>
+       </div>
+   </div>
+
+   <div class="container-field">
+     <div class="email">
+       <%= f.label :email, "Email" %>
+       <%= f.email_field :email, required: true %>
+     </div>
+     <div class='spacser'></div>
+     <div  class="phone">
+       <%= f.label :phone, "Phone Number" %>
+       <%= f.telephone_field :phone, required: true %>
+     </div>
+   </div>
+   <div class="container-field">
+     <div class="subject">
+       <%= f.label :subject, "Subject" %>
+       <%= f.select :subject, [['Math', 'Math'], ['Science', 'Science'], ['History', 'History']], prompt: 'Choose option', required: true %>
+     </div>
+   </div>
+
+  <%= f.submit "Update", class: "submit-button" %>
+  <%= link_to 'View Users', users_path, class: 'btn-view-users' %>
+ <% end %>
+</section>
