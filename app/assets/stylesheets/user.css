@@ -99,8 +99,16 @@ form {
     transition: background-color 0.3s ease;
 }
   
+
 .submit-button:hover {
+    transform: scale(1.05); /* เพิ่มขนาดเล็กน้อยเมื่อ hover */
     background-color: #3c5cd0;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.submit-button:active {
+    transform: scale(0.95); /* ลดขนาดเมื่อกดปุ่มเพื่อให้ดูเด้ง */
+    background-color: #354ab8;
 }
 
 .gender-radio {
