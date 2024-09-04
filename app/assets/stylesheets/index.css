@@ -6,11 +6,13 @@
     align-items: center;
     width: 100%;
     min-width: 300px;
+    max-width: 1100px;
 
     padding: 18px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     font-family: sans-serif;
+    transition: width 0.3s ease;
 }
 
 .container-table{
@@ -18,6 +20,7 @@
     border-radius: 10px;
     background-color: #f0f0f0;
     overflow-x: scroll;
+    transition: width 0.3s ease;
 }
 
 
@@ -28,7 +31,7 @@ table {
     border-collapse: collapse;
     background-color: #f0f0f0;
     overflow: hidden; /* ทำให้ขอบโค้งมีผลกับเนื้อหาภายใน */
-    transform: min-width 0.3s ease;
+    transform: width 0.3s ease;
 }
 
 th{
@@ -48,7 +51,7 @@ td {
 }
 
 th, td {
-   transition: padding 0.3s ease, font-size 0.3s ease,;
+   transition: padding 0.3s ease, font-size 0.3s ease, width 0.3s ease; 
 }
 tr:nth-child(even) td {
     background-color: #e5e5e5ca; 
@@ -148,8 +151,12 @@ padding-left: 30px;
 
 }
 
-.btn-edit, .btn-delete{
-    transition: font-size 0.3s ease;
+.btn-edit, .btn-delete {
+    transition: transform 0.3s ease, font-size 0.3s ease; /* เพิ่ม transition สำหรับ transform และ font-size */
+}
+
+.btn-edit:hover, .btn-delete:hover {
+    transform: scale(1.05); /* ขยายขนาดปุ่มเมื่อ hover */
 }
 
 #user-list{
