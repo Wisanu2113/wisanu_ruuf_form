@@ -5,8 +5,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    
-    padding: 30px;
+    min-width: 300px;
+
+    padding: 18px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     font-family: sans-serif;
@@ -27,9 +28,10 @@ table {
     border-collapse: collapse;
     background-color: #f0f0f0;
     overflow: hidden; /* ทำให้ขอบโค้งมีผลกับเนื้อหาภายใน */
+    transform: min-width 0.3s ease;
 }
 
-th, td {
+th{
     padding: 8px 15px 8px 15px; 
     text-align: left; 
 }
@@ -42,8 +44,13 @@ th {
 
 td {
     color: #333; 
+    padding: 0px;
+    margin: 0px;
 }
 
+th, td {
+   transition: padding 0.3s ease, font-size 0.3s ease,;
+}
 tr:nth-child(even) td {
     background-color: #e5e5e5ca; 
 }
@@ -61,6 +68,7 @@ padding-left: 30px;
 
     width: 100%;
     max-width: 150px;
+    transition: width 0.3s ease, max-width 0.3s ease;
     /* background-color: #007bff */
 }
 
@@ -97,7 +105,10 @@ padding-left: 30px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-
+    height: 60px;
+    margin-bottom: 10px;
+    transform: margin-bottom 0.3s ease;
+    /* background-color: aqua; */
 }
 
 
@@ -118,7 +129,12 @@ padding-left: 30px;
     text-decoration: none;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+
+    /*  max-width: 180px;
+        height: 40px;
+        font-size: 16px;
+        border-radius: 5px; */
+    transition: transform 0.2s ease, background-color 0.3s ease , font-size 0.3s ease, height 0.3s ease, max-width 0.3s ease;
 }
 
 .btn-add-user:hover {
@@ -132,4 +148,94 @@ padding-left: 30px;
     background-color: #354ab8;
 
 }
+
+.btn-edit, .btn-delete{
+    transition: font-size 0.3s ease;
+}
+
+#user-list{
+    padding: 0px;
+    /* margin-bottom: 10px; */
+    font-size: 40px;
+    color: #363636;
+    /* background-color: #f57070; */
+    transition: font-size 0.3s ease;
+    
+}
+
+@media (max-width:612px) {
+    #user-list{
+        font-size: 36px;
+    }
+    .btn-add-user{
+        max-width: 180px;
+        height: 40px;
+        font-size: 16px;
+       
+    }
+    
+}
+
+@media (max-width:540px) {
+    #user-list{
+        font-size: 30px;
+    }
+    .btn-add-user{
+        max-width: 150px;
+        height: 40px;
+        font-size: 16px;
+
+    }
+    
+}
+
+@media (max-width:480px) {
+    #user-list{
+        font-size: 26px;
+    }
+    .btn-add-user{
+        max-width: 140px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+}
+
+@media (max-width:376px) {
+    #user-list{
+        font-size:20px;
+    }
+    table {
+        min-width: 700px;
+    }
+    .btn-add-user{
+        max-width: 120px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .row-container{
+        margin-bottom: 0px;
+        
+    }
+
+    th, td {
+        font-size: 12px;
+        padding: 4px 7px 4px 7px; 
+
+    }
+
+    .button-table{
+        width: 80%;
+        max-width: 150px;
+        /* background-color: #007bff */
+    }
+
+    .btn-edit, .btn-delete{
+        font-size: 10px;
+    }
+    
+}
+
+
+
 

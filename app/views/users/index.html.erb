@@ -1,6 +1,6 @@
 <section class="container-list-user">
     <div class="row-container">
-          <h1>Users List</h1>
+          <h1 id="user-list">Users List</h1>
       <%= link_to 'Add New User', new_user_path, class: 'btn-add-user' %>
     </div>
    <div class="container-table">
@@ -29,8 +29,8 @@
           <td><%= user.subject %></td>
           <td>
             <div class="button-table">
-            <%= link_to 'Edit', edit_user_path(user), class: 'btn-edit' %>
             <%= button_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
+            <%= link_to 'Edit', edit_user_path(user), class: 'btn-edit' %>
             </div>
           </td>
         </tr> 

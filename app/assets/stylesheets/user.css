@@ -6,6 +6,7 @@ html{
 }
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: linear-gradient(to bottom, #9a4376, #c44577);
@@ -21,7 +22,7 @@ body {
     background-color: #ffffff;
     font-family: sans-serif;
 }
-h1{
+#register{
    font-size: 40px;
     color: #333;
 }
