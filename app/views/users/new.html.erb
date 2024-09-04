@@ -16,18 +16,17 @@
   <div class="container-field">
      <div class="birthday">
         <%= f.label :birthday, "Birthday" %>
-        <%= f.date_field :birthday, required: true %>
+        <%= f.date_field :birthday, required: true ,class: "custom-date-field" %>
       </div>
       <div class='spacser'></div>
-
       <div class="gender">
         <%= f.label :gender, "Gender" %>
           <div class="row-container-gender">
                <%= f.radio_button :gender, 'Male', class: "gender-radio" %>
-              <%= f.label :gender_male, "Male" %>
+              <%= f.label :gender_male, "Male" , class: "gender-label"%>
                <div class='spacser'></div>
               <%= f.radio_button :gender, 'Female', class: "gender-radio"  %>
-              <%= f.label :gender_female, "Female" %>
+              <%= f.label :gender_female, "Female", class: "gender-label" %>
           </div>
       </div>
   </div>
