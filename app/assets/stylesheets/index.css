@@ -1,0 +1,123 @@
+/* table */
+.container-table{
+    width: 100%;
+    max-width: 1200px;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+
+    font-family: sans-serif;
+
+}
+
+table {
+    width: 100%;
+    border-radius: 10px; /* เพิ่มขอบโค้งมนให้กับตาราง */
+    border-collapse: collapse;
+    background-color: #f0f0f072;
+    overflow: hidden; /* ทำให้ขอบโค้งมีผลกับเนื้อหาภายใน */
+}
+
+th, td {
+    padding: 8px 15px 8px 15px; 
+    text-align: left; 
+}
+
+th {
+    background: linear-gradient(to bottom, #9a4376, #c44577); /* เพิ่มสีแบบไล่เฉด */
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    color: #333; 
+}
+
+tr:nth-child(even) td {
+    background-color: #e5e5e5ca; 
+}
+
+.fn{
+padding-left: 30px;
+}
+
+
+.button-table{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    max-width: 150px;
+    /* background-color: #007bff */
+}
+
+.btn-edit{
+    height: 100%;
+    padding: 10px;
+    border-radius: 6px;
+
+    font-weight: 600;
+    background-color: #ffffffea; 
+    box-shadow: 0 0 5px #adadad;
+    color: rgb(92, 92, 92);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-delete{
+    height: 100%;
+    padding: 10px;
+    border-radius: 6px;
+
+    background-color: #f57070; 
+    border: none;
+    box-shadow: 0 0 5px #cacaca;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.row-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+}
+
+
+.btn-add-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 30px;
+    border-radius: 5px;
+
+    border: none;
+    background-color:#5a73d0;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add-user:hover {
+    transform: scale(1.05); /* เพิ่มขนาดเล็กน้อยเมื่อ hover */
+    background-color: #3c5cd0;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn-add-user:active {
+    transform: scale(0.95); /* ลดขนาดเมื่อกดปุ่มเพื่อให้ดูเด้ง */
+    background-color: #354ab8;
+
+}

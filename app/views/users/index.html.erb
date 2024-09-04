@@ -3,7 +3,7 @@
   <table>
     <thead>
       <tr>
-        <th>First Name</th>
+        <th class="fn">First Name</th>
         <th>Last Name</th>
         <th>Birthday</th>
         <th>Gender</th>
@@ -16,7 +16,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.first_name %></td>
+          <td class="fn"><%= user.first_name %></td>
           <td><%= user.last_name %></td>
           <td><%= user.birthday %></td>
           <td><%= user.gender %></td>
@@ -24,13 +24,16 @@
           <td><%= user.phone %></td>
           <td><%= user.subject %></td>
           <td>
-
+            <div class="button-table">
             <%= link_to 'Edit', edit_user_path(user), class: 'btn-edit' %>
             <%= button_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
+            </div>
           </td>
         </tr> 
       <% end %>
     </tbody>
   </table>
+  <div class="row-container">
   <%= link_to 'Add New User', new_user_path, class: 'btn-add-user' %>
+    </div>
 </section>
