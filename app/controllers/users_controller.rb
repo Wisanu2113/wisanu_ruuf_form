@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+
+  before_action :set_user, only: [:edit, :update, :destroy]
+
+  def index 
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -12,9 +19,25 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :birthday, :gender, :email, :phone, :subject)
+  def update
+    if @user.update(user_params)
+      redirect_to new_user_path, notice: 'Registration was successfully updated.'
+    else
+      render :edit
+    end
   end
+
+  def destroy
+    @user.destroy
+    redirect_to new_user_path, notice: 'Registration was successfully deleted.'
+  end
+
+  private
+    def set_uesr
+      @user = Registration.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :birthday, :gender, :email, :phone, :subject)
+    end
 end
