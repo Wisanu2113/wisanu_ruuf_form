@@ -1,5 +1,9 @@
 <section class="container-table">
-  <h1>Users List</h1>
+      <div class="row-container">
+          <h1>Users List</h1>
+      <%= link_to 'Add New User', new_user_path, class: 'btn-add-user' %>
+    </div>
+
   <table>
     <thead>
       <tr>
@@ -33,7 +37,5 @@
       <% end %>
     </tbody>
   </table>
-  <div class="row-container">
-  <%= link_to 'Add New User', new_user_path, class: 'btn-add-user' %>
-    </div>
+
 </section>
