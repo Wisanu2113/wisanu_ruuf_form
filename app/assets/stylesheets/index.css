@@ -32,20 +32,19 @@ table {
 }
 
 th{
-    padding: 8px 15px 8px 15px; 
+    padding: 8px 15px 8px 0px; 
     text-align: left; 
-}
-
-th {
     background: linear-gradient(to bottom, #9a4376, #c44577); /* เพิ่มสีแบบไล่เฉด */
     color: white;
     font-weight: bold;
 }
 
+
 td {
     color: #333; 
     padding: 0px;
     margin: 0px;
+    text-align: left; /* จัดข้อความให้ชิดซ้าย */
 }
 
 th, td {
