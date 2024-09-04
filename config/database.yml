@@ -1,28 +1,47 @@
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
 
-  # username: <%= ENV['POSTGRES_LOCAL_USER'] %>
-  # password: <%= ENV['POSTGRES_LOCAL_PASSWORD'] %>
-  # host: <%= ENV['POSTGRES_HOST'] %>
+#   # username: <%= ENV['POSTGRES_LOCAL_USER'] %>
+#   # password: <%= ENV['POSTGRES_LOCAL_PASSWORD'] %>
+#   # host: <%= ENV['POSTGRES_HOST'] %>
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+# development:
+#   <<: *default
+#   database: <%= ENV['POSTGRES_DB'] %>
+#   username: <%= ENV['POSTGRES_LOCAL_USER'] %>
+#   password: <%= ENV['POSTGRES_LOCAL_PASSWORD'] %>
+#   host: <%= ENV['POSTGRES_HOST'] %>
+#   port: 5432
+
+# test:
+#   <<: *default
+#   database: <%= ENV['POSTGRES_DB'] %>
+
+
+# production:
+#   <<: *default
+#   database: odds_janitor_production
+#   username: odds_janitor
+#   password: <%= ENV["ODDS_JANITOR_DATABASE_PASSWORD"] %>
+
+default: &default
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default
-  database: <%= ENV['POSTGRES_DB'] %>
-  username: <%= ENV['POSTGRES_LOCAL_USER'] %>
-  password: <%= ENV['POSTGRES_LOCAL_PASSWORD'] %>
-  host: <%= ENV['POSTGRES_HOST'] %>
-  port: 5432
+  database: db/development.sqlite3
 
 test:
   <<: *default
-  database: <%= ENV['POSTGRES_DB'] %>
-
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: odds_janitor_production
-  username: odds_janitor
-  password: <%= ENV["ODDS_JANITOR_DATABASE_PASSWORD"] %>
+  database: db/production.sqlite3
+  # คุณอาจต้องการตั้งค่าพิเศษสำหรับ production เช่นการใช้ไฟล์ที่ต่างออกไป
+
