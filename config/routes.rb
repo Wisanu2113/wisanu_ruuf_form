@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
+  get 'users/new'
+  get "up" => "rails/health#show", as: :rails_health_check
+  resources :users, only: [:new, :create]
 end
