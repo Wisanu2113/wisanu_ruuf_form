@@ -1,17 +1,28 @@
 /* table */
-.container-table{
+.container-list-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 1200px;
+    
     padding: 30px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     font-family: sans-serif;
+}
 
+.container-table{
+    width: 100%;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    overflow-x: scroll;
 }
 
 
 table {
     width: 100%;
+    min-width: 1000px;
     border-radius: 10px; /* เพิ่มขอบโค้งมนให้กับตาราง */
     border-collapse: collapse;
     background-color: #f0f0f0;
@@ -122,7 +133,3 @@ padding-left: 30px;
 
 }
 
-
-@media (max-width: 1060px){
-
-}
