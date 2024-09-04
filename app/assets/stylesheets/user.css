@@ -10,12 +10,13 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(to bottom, #9a4376, #c44577);
-    padding: 60px;
+    padding: 40px;
 }
 .container-form{
     width: 100%;
     max-width: 500px;
-    padding: 80px 60px 60px 60px;
+    height: fit-content;
+    padding: 70px 60px 50px 60px;
 
     border-radius: 10px;
     background-color: #ffffff;
@@ -140,46 +141,38 @@ form {
     margin: 0 auto;
 }
   
-@media (max-width: 376px) {
-
-    #register{
-        font-size: 16px;
-
-    }
-
-
-    label{
-        margin-bottom: 2px;
-        font-weight: 500;
-        font-size: 10px;
-    }
+@media (max-width: 541px) {
 
     .container-form{
-       max-width: 200px;
-       padding:0px;
+        min-width: 330px;
+        padding:10px;
+    }
+
+    #register{
+        font-size: 18px;
+    }
+    .container-field{
+        width: 100%;
+    }
+
+    label{
+        font-size: 14px;
     }
     
     input, select{
-        padding:0px;
+        padding:5px;
         width: 95%;
         border-radius: 5px;
-       
-    }
-
-    .container-field{
-        width: 100%;
-        background-color: #4CAF50;
-      
     }
     
     .custom-date-field {
-        font-size: 8px; /* ปรับขนาดตัวหนังสือของฟิลด์วันที่ */
-        padding: 2px; /* ปรับ padding เพื่อให้ฟิลด์ดูพอดี */
-        width: 95%;
+        font-size: 12px; /* ปรับขนาดตัวหนังสือของฟิลด์วันที่ */
+        font-weight: 400;
+        color: #6e6e6e; ;
+        padding: 5px; /* ปรับ padding เพื่อให้ฟิลด์ดูพอดี */
     }
 
     .birthday{
-       
         width: 100%;
         height: fit-content;
     
@@ -190,29 +183,28 @@ form {
         flex-direction: column;
         align-items: start;
         width: 100%;
-        height: 50px;
+
         /* background-color: #5a73d0; */
     }
 
     .row-container-gender{
         display: flex;
         flex-direction: row;
-        justify-content: center;
-
+        justify-content: start;
+        padding: 6px 0px 10px 0px;
         width: 100%;
-        height: 50px;
-        padding: 0px;
     }
 
     .gender-label{
-        font-size: 9px; /* ปรับขนาดตัวหนังสือของ label ของเพศ */
-         margin-top: 2px;
+        width: 100%;
+        font-size: 14px; /* ปรับขนาดตัวหนังสือของ label ของเพศ */
+        color: #414141;
     }
 
     .gender-radio {
-        margin-right: 2px;
-        width: 9px; /* ขนาดความกว้างของปุ่ม radio */
-        height: 9px; /* ขนาดความสูงของปุ่ม radio */
+        width: 12px; /* ขนาดความกว้างของปุ่ม radio */
+        height:12px; /* ขนาดความสูงของปุ่ม radio */
+ 
     }
     
  
