@@ -1,42 +1,46 @@
 <section class="container-list-user">
-    <div class="row-container">
-          <h1 id="user-list">Users List</h1>
-      <%= link_to 'Add New User', new_user_path, class: 'btn-add-user' %>
-    </div>
-   <div class="container-table">
-  <table>
-    <thead>
-      <tr>
-        <th class="fn">First Name</th>
-        <th>Last Name</th>
-        <th>Birthday</th>
-        <th>Gender</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Subject</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td class="fn"><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-          <td><%= user.birthday %></td>
-          <td><%= user.gender %></td>
-          <td><%= user.email %></td>
-          <td><%= user.phone %></td>
-          <td><%= user.subject %></td>
-          <td>
-            <div class="button-table">
-            <%= button_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
-            <%= link_to 'Edit', edit_user_path(user), class: 'btn-edit' %>
-            </div>
-          </td>
-        </tr> 
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
+  <div class="row-container">
+    <h1 id="user-list">Users List</h1>
+    <%= link_to 'Add New User', new_user_path, class: 'btn-add-user' %>
+  </div>
+  
+  <div class="container-table">
+    <% if @users.any? %>
+      <table>
+        <thead>
+          <tr>
+            <th class="fn">First Name</th>
+            <th>Last Name</th>
+            <th>Birthday</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Subject</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="fn"><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.birthday %></td>
+              <td><%= user.gender %></td>
+              <td><%= user.email %></td>
+              <td><%= user.phone %></td>
+              <td><%= user.subject %></td>
+              <td>
+                <div class="button-table">
+                  <%= button_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
+                  <%= link_to 'Edit', edit_user_path(user), class: 'btn-edit' %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No data available</p>
+    <% end %>
+  </div>
 </section>
