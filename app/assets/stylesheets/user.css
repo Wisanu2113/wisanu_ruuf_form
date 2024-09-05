@@ -154,7 +154,7 @@ form {
     font-size: 12px; /* ปรับขนาดตัวหนังสือของฟิลด์วันที่ */
     font-weight: 400;
     color: #6e6e6e; ;
-    padding: 5px; /* ปรับ padding เพื่อให้ฟิลด์ดูพอดี */
+    padding: 12px; /* ปรับ padding เพื่อให้ฟิลด์ดูพอดี */
     transition: font-size 0.3s ease, padding 0.3s ease ,color 0.3s ease, font-weight 0.3s ease;
 }
 
@@ -163,8 +163,14 @@ form {
 }
 
 
+@media (max-width:670px) {
+    .container-form{
+        min-width: 80px;
+        max-width: 500px;
+        padding:10px;
+    }
+}
 
-  
 @media (max-width: 541px) {
 
     .container-form{
