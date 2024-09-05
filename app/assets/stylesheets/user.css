@@ -21,11 +21,13 @@ body {
     border-radius: 10px;
     background-color: #ffffff;
     font-family: sans-serif;
+    transition: min-width 0.3s ease, padding 0.3s ease;
 }
 
 #register{
    font-size: 40px;
     color: #333;
+    transition: font-size 0.3s ease;
 }
 
 .spacser{
@@ -47,6 +49,8 @@ input, select{
     border: 1px solid #cbcbcb;
     background-color: #fafafa;
     font-size: 14px;
+
+    transition: padding 0.3s ease, widht 0.3s ease, border-radius 0.3s ease;
 }
 
 form {
@@ -80,6 +84,7 @@ form {
 .gender{
     display: flex;
     flex-direction: column;
+    align-items: start;
     width: 100%;
 }
 
@@ -90,7 +95,7 @@ form {
     align-items: start;
     width: 100%;
     padding: 10px 10px 10px 0;
-
+   transition: padding 0.3s ease;
 }
 
 .submit-button {
@@ -123,13 +128,13 @@ form {
     margin-left: 0px; 
     border-radius: 100%;
     appearance: auto;
+    transition: width 0.3s ease, height 0.3s ease;
    
 }
   
 .gender-radio:checked {
     background-color: #4CAF50; /* สีพื้นหลังเมื่อเลือก */
 }
-
 
 .box-bnt{
     display: flex;
@@ -140,6 +145,25 @@ form {
     width: 100%;
     margin: 0 auto;
 }
+
+.label{
+    transition: font-size 0.3s ease;
+}
+
+.custom-date-field {
+    font-size: 12px; /* ปรับขนาดตัวหนังสือของฟิลด์วันที่ */
+    font-weight: 400;
+    color: #6e6e6e; ;
+    padding: 5px; /* ปรับ padding เพื่อให้ฟิลด์ดูพอดี */
+    transition: font-size 0.3s ease, padding 0.3s ease ,color 0.3s ease, font-weight 0.3s ease;
+}
+
+.gender-label{
+    transition: font-size 0.3s ease, color 0.3s ease , width 0.3s ease;
+}
+
+
+
   
 @media (max-width: 541px) {
 
@@ -150,9 +174,6 @@ form {
 
     #register{
         font-size: 18px;
-    }
-    .container-field{
-        width: 100%;
     }
 
     label{
@@ -172,27 +193,8 @@ form {
         padding: 5px; /* ปรับ padding เพื่อให้ฟิลด์ดูพอดี */
     }
 
-    .birthday{
-        width: 100%;
-        height: fit-content;
-    
-    }
-
-    .gender{
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        width: 100%;
-
-        /* background-color: #5a73d0; */
-    }
-
     .row-container-gender{
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
         padding: 6px 0px 10px 0px;
-        width: 100%;
     }
 
     .gender-label{
