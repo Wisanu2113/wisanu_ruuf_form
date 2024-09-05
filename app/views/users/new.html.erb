@@ -22,10 +22,10 @@
       <div class="gender">
         <%= f.label :gender, "Gender" %>
           <div class="row-container-gender">
-               <%= f.radio_button :gender, 'Male', class: "gender-radio" %>
+               <%= f.radio_button :gender, 'Male',required: true , class: "gender-radio" %>
               <%= f.label :gender_male, "Male" , class: "gender-label"%>
                <div class='spacser'></div>
-              <%= f.radio_button :gender, 'Female', class: "gender-radio"  %>
+              <%= f.radio_button :gender, 'Female',required: true , class: "gender-radio"  %>
               <%= f.label :gender_female, "Female", class: "gender-label" %>
           </div>
       </div>
