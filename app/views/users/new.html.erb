@@ -63,3 +63,13 @@
 
 <% end %>
 </section>
+
+<!-- Modal -->
+<div id="success-modal" class="modal hidden">
+  <div class="modal-content">
+    <span id="close-modal" class="close">&times;</span>
+    <h2>Registration Successful</h2>
+    <p>Your registration was successful!</p>
+    <%= link_to 'Back to Users List', users_path, class: 'btn-back-to-users' %>
+  </div>
+</div>
