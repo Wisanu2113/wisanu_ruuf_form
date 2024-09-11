@@ -1,11 +1,21 @@
 <section class="container-form">
+  
+<% flash.each do |flash_type, message| %>
+   <% if message == "true" %>
+  <div id="myModal" class="modal" style="display: block; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; text-align: center;">
+      <span class="close" style="color: #aaa; float: right; font-size: 28px; font-weight: bold;">&times;</span>
+      <p>Successfully</p>
+       <%= link_to 'Back to Users List', users_path, class: 'submit-button' %>
+      
+    </div>
+  </div>
+<% end %>
+  <% end
+  
+
 <%= form_with model: @user, url: users_path do |f| %>
   <h1 id="register">Register Form</h1>
-  <% flash.each do |flash_type, message| %>
-   <div class="flash_message"> 
-      <%= message %>
-   </div>
-  <% end %>
 
   <div class="container-field">
   
@@ -64,12 +74,3 @@
 <% end %>
 </section>
 
-<!-- Modal -->
-<div id="success-modal" class="modal hidden">
-  <div class="modal-content">
-    <span id="close-modal" class="close">&times;</span>
-    <h2>Registration Successful</h2>
-    <p>Your registration was successful!</p>
-    <%= link_to 'Back to Users List', users_path, class: 'btn-back-to-users' %>
-  </div>
-</div>
