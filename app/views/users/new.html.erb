@@ -6,12 +6,11 @@
     <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; text-align: center;">
       <span class="close" style="color: #aaa; float: right; font-size: 28px; font-weight: bold;">&times;</span>
       <p>Successfully</p>
-       <%= link_to 'Back to Users List', users_path, class: 'submit-button' %>
-      
+       <%= link_to 'OK', users_path, class: 'submit-button' %>
     </div>
   </div>
 <% end %>
-  <% end
+  <% end %>
   
 
 <%= form_with model: @user, url: users_path do |f| %>
